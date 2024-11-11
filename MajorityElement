@@ -1,0 +1,12 @@
+def majorityElement(List1):
+    n=len(List1)
+    for i in range(n):
+        count=0
+        for j in range(n):
+            if List1[i]==List1[j]:
+                count+=1
+            if count>n//2:
+                return List1[i]
+    return -1
+List1=list(map(int,input("enter list").split()))
+print(majorityElement(List1))
