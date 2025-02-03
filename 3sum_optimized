@@ -1,0 +1,17 @@
+def threeSum(nums):
+    triplet_sum=set()
+    n=len(nums)
+    for i in range(0,1):
+        d={}
+        for j in range(i+1,n):
+            k = -(nums[i]+nums[j])
+            if k in d:
+                temp = [nums[i],nums[j],k]
+                temp.sort()
+                triplet_sum.add(tuple(temp))
+            d[nums[j]]=1
+    ans = [list(triple) for triple in triplet_sum]
+    return ans
+    
+nums = list(map(int,input().split()))
+print(threeSum(nums))
