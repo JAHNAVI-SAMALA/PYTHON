@@ -1,0 +1,11 @@
+def twoSum(nums,target):
+    d= {}
+    for a in range(0,len(nums)):
+        b= target-nums[a]
+        if b in d:
+            return [a,d[b]]
+        d[nums[a]] = a 
+nums = list(map(int,input().split()))
+target = int(input())#tc O(N) sc O(N)
+print(twoSum(nums,target))
+                   
