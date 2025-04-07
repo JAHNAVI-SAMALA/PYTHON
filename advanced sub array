@@ -1,0 +1,46 @@
+"""Description
+You are competing in a basketball contest. In this contest the score for each successful shot depends on both the distance from the  basket and the player's position. The ball is shot N times, successfully. You are given an array A containing the distance of a player from basket for N shots. The index of array represents the  position of the player. Score is calculated by multiplying the position with the distance from the basket.
+
+Your task is to find and return an integer value, representing the maximum possible score you can achieve by choosing a contiguous subarray of size K from the given array.
+
+Note:
+
+* A subarray is a contiguous part of array.
+
+* Assume 1 based indexing.
+
+* The array contains both negative and positive values.
+
+* Assume the player is standing on a cartesian plane.
+
+Input Format
+
+- input1:An integer value N representing the number of shots made by the player 
+
+- input2 : An integer K representing the size of subarray
+
+- input3 : An array of integers 
+
+Sample Input
+
+5
+2
+1 2 3 4 5
+
+Sample Output
+
+14 """
+
+#code
+def max_score(N,K,A):
+    current_score=sum((i+1)*A[i] for i in range(K))
+    max_score=current_score
+    for i in range(1,N-K+1):
+        current_score+=K*A[i+K-1]-sum(A[i-1:i-1+K])
+        max_score=max(max_score,current_score)
+    return max_score
+N=int(input())
+K=int(input())
+A=list(map(int,input().split()))
+result=max_score(N,K,A)
+print(result)
