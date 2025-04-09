@@ -21,13 +21,18 @@ class Shape(ABC):
         pass
     def perimeter(self):
         pass
-    class Circle(Shape):
-        def __init__(self,radius):
-            self.radius = radius
-        def area(self):
-            return 3.14 * self.radius * self.radius
-        def perimeter(self):
-            return 2*3.14*self.radius
+class Circle(Shape):
+    def __init__(self,radius):
+        self.radius = radius
+    def area(self):
+        return 3.14 * self.radius * self.radius
+    def perimeter(self):
+        return 2*3.14*self.radius
 obj = Circle(2.5)
 print(obj.area())
 print(obj.perimeter())
+
+'''output
+19.625
+15.700000000000001
+'''
