@@ -1,0 +1,14 @@
+def Power(x,n):
+    if n == 0:
+        return 1
+    if n%2 == 1:
+        return x*Power(x,n-1)
+    else:
+        return Power( x*x,n//2)
+        if(n<0):
+            x = 1/x
+            n = abs(n)
+            return Power(x,n)
+x =int(input())
+n =int(input())
+print(Power(x,n))
