@@ -1,0 +1,5 @@
+n = int(input())
+arr = list(map(int,input().split()))
+def reverseArr(n,arr):
+    return arr[::-1]
+print(reverseArr(n,arr))
