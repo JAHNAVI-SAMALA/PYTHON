@@ -1,0 +1,6 @@
+def lcm(n1,n2):
+    return (n1*n2)//gcd(n1,n2)
+def gcd(n1,n2):
+    return n1 if(n2==0) else gcd(n2,n1%n2)
+n1,n2 = map(int,input().split())
+print(lcm(n1,n2))
