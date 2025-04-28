@@ -1,0 +1,8 @@
+n = int(input())
+arr = list(map(int,input().split()))
+def ArrIsSorted(n,arr):
+    if arr == sorted(arr):
+        return True
+    else:
+        return False
+print(ArrIsSorted(n,arr)) 
