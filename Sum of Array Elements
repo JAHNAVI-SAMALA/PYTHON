@@ -1,0 +1,9 @@
+n = int(input())
+arr = list(map(int,input().split()))
+def SumofArrElements(n,arr):
+    n=len(arr)
+    total = 0
+    for i in range(0,n):
+        total += arr[i]
+    return total
+print(SumofArrElements(n,arr))
