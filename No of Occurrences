@@ -1,0 +1,8 @@
+s = input()
+def NoOfOccurences(s):
+    dict1 ={}
+    for char in s:
+        dict1[char] = dict1.get(char,0) + 1
+    sort = sorted(dict1.items(),key = lambda x:(-x[1],x[0]))
+    return [ch for ch,count in sort]
+print(NoOfOccurences(s))
