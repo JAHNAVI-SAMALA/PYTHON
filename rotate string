@@ -1,0 +1,6 @@
+s,goal = map(str,input().split())
+def rotateStr(s,goal):
+    if len(s)!=len(goal):
+        return False
+    return goal in (s+s)
+print(rotateStr(s,goal))
