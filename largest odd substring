@@ -1,0 +1,12 @@
+s = input()
+def largestOddInt(s):
+    max_odd = 0
+    for i in range(0,len(s)):
+        if int(s[i])%2 != 0:
+            for j in range(0,i+1):
+                sub = s[j:i+1]
+                if sub[0]!= '0':
+                    if max_odd == '' or int(sub)>int(max_odd):
+                        max_odd = sub
+    return str(int(max_odd)) if max_odd else ""
+print(largestOddInt(s))
