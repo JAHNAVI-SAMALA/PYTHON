@@ -1,0 +1,20 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack = []
+        current_num = 0
+        current_str = ""
+        for c in s:
+            if c.isdigit():
+                current_num = current_num*10 + int(c)
+            elif c == '[':
+                stack.append(current_str)
+                stack.append(current_num)
+                current_num = 0
+                current_str = ""
+            elif c == ']':
+                num = stack.pop()
+                prev_str = stack.pop()
+                current_str = prev_str + current_str * num
+            elif c.isalpha():
+                current_str += c
+        return current_str
