@@ -1,0 +1,52 @@
+class Solution:
+    def numOfSubsequences(self, s: str) -> int:
+
+        Lcount = LCcount = LCTcount = 0
+        for c in s:
+            if c == 'L':
+                Lcount += 1
+            elif c == 'C':
+                LCcount += Lcount
+            elif c == 'T':
+                LCTcount += LCcount
+
+        original = LCTcount
+
+
+        count_LCT_L = 0
+        Lcount = 1
+        LCcount = 0
+        for c in s:
+            if c == 'C':
+                LCcount += Lcount
+            elif c == 'T':
+                count_LCT_L += LCcount
+            elif c == 'L':
+                Lcount += 1
+
+  
+        Lcount = LCcount = 0
+        count_LCT_T = 0
+        for c in s:
+            if c == 'L':
+                Lcount += 1
+            elif c == 'C':
+                LCcount += Lcount
+            elif c == 'T':
+                count_LCT_T += LCcount
+        count_LCT_T += LCcount  
+
+        n = len(s)
+        prefix_L = [0] * (n + 1)
+        suffix_T = [0] * (n + 1)
+
+        for i in range(n):
+            prefix_L[i + 1] = prefix_L[i] + (1 if s[i] == 'L' else 0)
+        for i in range(n - 1, -1, -1):
+            suffix_T[i] = suffix_T[i + 1] + (1 if s[i] == 'T' else 0)
+
+        max_insert_C = 0
+        for i in range(n + 1):
+            max_insert_C = max(max_insert_C, prefix_L[i] * suffix_T[i])
+
+        return max(original, count_LCT_L, count_LCT_T, original + max_insert_C)
