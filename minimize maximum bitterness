@@ -1,0 +1,52 @@
+"""
+Problem Statement:
+In a quaint village nestled between rolling hills, there were N different salt containers and N different pepper containers in two separate groups. Each container had a specific level of bitterness, represented by arrays A and B respectively. The task at hand was to form N combinations, each consisting of one salt container and one pepper container
+However, there was a twist to the challenge. The objective was to arrange the combinations in such a way that the maximum bitterness level, which is the sum of salt and pepper quantities in each combination, was minimized.
+Print the lowest possible maximum bitterness level.
+
+Input Format:
+The first line contains a single integer N, the number of salt and pepper containers in each group.
+
+The second line contains N space-separated integers, denoting the bitterness level of N salt containers.
+
+The third line contains N space-separated integers, denoting the bitterness level of N pepper containers. 
+
+Sample Innput:
+
+3
+
+1 3 5
+
+2 8 6
+
+Sample Output:
+
+11
+"""
+#Source Code:
+
+N = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+def can_from_combinations(A,B,max_bitterness):
+    used_pepper = [False]*len(B)
+    for s in A:
+        found = False
+        for j in range(len(B)):
+            if not used_pepper[j] and (s+B[j] <= max_bitterness):
+                used_pepper[j] = True
+                found = True
+                break
+        if not found:
+            return False
+    return True
+def minimize_max_bitterness(N,A,B):
+    left,right = 0,max(A)+max(B)
+    while left < right :
+        mid = (left + right)//2
+        if can_from_combinations(A,B,mid):
+            right = mid
+        else:
+            left = mid + 1
+    return left
+print(minimize_max_bitterness(N,A,B))
